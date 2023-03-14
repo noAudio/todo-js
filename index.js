@@ -21,6 +21,7 @@ function addNewTodo() {
         todoItems.push(
             { title: titleTextBox.value, description: contentTextBox.value, isComplete: false }
         );
+        todoItems.sort(sortByIsComplete);
 
         updateLocalStorage();
 
@@ -96,6 +97,7 @@ function completeTodo(index) {
     todoObject.isComplete = true;
     deleteTodo(index);
     todoItems.push(todoObject);
+    todoItems.sort(sortByIsComplete);
     updateLocalStorage();
     updateTodoListDOMElements();
 }
@@ -113,4 +115,14 @@ function editTodo(index) {
 function updateLocalStorage() {
     localStorage.clear();
     localStorage.setItem('todos', JSON.stringify(todoItems));
+}
+
+function sortByIsComplete(a, b) {
+    if(a.isComplete && !b.isComplete) {
+        return 1;
+    }
+    if(!a.isComplete && b.isComplete) {
+        return -1;
+    }
+    return 0;
 }
