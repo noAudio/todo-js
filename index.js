@@ -9,7 +9,6 @@ class TodoItem {
     constructor(title, description) {
         this.title = title;
         this.description = description;
-        this.isComplete = false;
     }
 }
 
@@ -41,10 +40,12 @@ function updateTodoListDOMElements() {
 
             let todoTitle = document.createElement('h4');
             todoTitle.className = 'title';
+            todoTitle.id = 'title-' + index;
             todoTitle.innerText = item.title;
 
             let todoDescription = document.createElement('p');
             todoDescription.className = 'content';
+            todoDescription.id = 'content-' + index;
             todoDescription.innerText = item.description;
 
             let row = document.createElement('div');
@@ -53,13 +54,15 @@ function updateTodoListDOMElements() {
             let completeButton = document.createElement('button');
             completeButton.className = 'btn';
             completeButton.textContent = 'Complete';
+            completeButton.onclick = function(){ completeTodo(index); };
             let editButton = document.createElement('button');
             editButton.className = 'btn';
             editButton.textContent = 'Edit';
+            editButton.onclick = function() { editTodo(index); };
             let deleteButton = document.createElement('button');
             deleteButton.className = 'btn';
             deleteButton.textContent = 'Delete';
-            deleteButton.onclick = function() {deleteTodo(index);};
+            deleteButton.onclick = function() { deleteTodo(index); };
 
             row.appendChild(completeButton);
             row.appendChild(editButton);
@@ -77,4 +80,26 @@ function deleteTodo(index) {
     todo.remove();
     // Remove todo from our list too.
     todoItems.splice(index, 1);
+}
+
+function completeTodo(index) {
+    let todo = document.getElementById('todo-' + index);
+    let title = document.getElementById('title-' + index);
+    let description = document.getElementById('content-' + index);
+
+    title.classList.add('txt-strike');
+    description.classList.add('txt-strike');
+
+    todo.remove();
+    todoListDiv.appendChild(todo);
+}
+
+function editTodo(index) {
+    let title = document.getElementById('title-' + index);
+    let description = document.getElementById('content-' + index);
+
+    titleTextBox.value = title.innerHTML;
+    contentTextBox.value = description.innerHTML;
+
+    deleteTodo(index);
 }
