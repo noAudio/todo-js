@@ -5,12 +5,25 @@ const todoListDiv = document.getElementById('todo-list');
 
 let todoItems = [];
 
+window.onload = function () {
+    if(localStorage.length > 0) {
+        let todos = localStorage.getItem('todos');
+        todoItems = JSON.parse(todos);
+        updateTodoListDOMElements();
+    } else {
+        console.log('No todos stored locally');
+    }
+};
+
 function addNewTodo() {
     if (titleTextBox.value !== '' && contentTextBox.value !== '') {
         errorParagraph.innerHTML = '';
         todoItems.push(
-            { title: titleTextBox.value, description: contentTextBox.value }
+            { title: titleTextBox.value, description: contentTextBox.value, isComplete: false }
         );
+
+        updateLocalStorage();
+
         updateTodoListDOMElements();
         titleTextBox.value = '';
         contentTextBox.value = '';
@@ -23,7 +36,6 @@ function addNewTodo() {
 function updateTodoListDOMElements() {
     if(todoItems.length > 0) {
         todoListDiv.innerHTML = '';
-        console.log(todoItems.length);
         for (let index = 0; index < todoItems.length; index++) {
             let item = todoItems[index];
             let title = item.title;
@@ -73,8 +85,9 @@ function updateTodoListDOMElements() {
 function deleteTodo(index) {
     let todo = document.getElementById('todo-' + index);
     todo.remove();
-    // Remove todo from our list too.
+    // Remove todo from our list and local storage.
     todoItems.splice(index, 1);
+    updateLocalStorage();
 }
 
 function completeTodo(index) {
@@ -97,4 +110,9 @@ function editTodo(index) {
     contentTextBox.value = description.innerHTML;
 
     deleteTodo(index);
+}
+
+function updateLocalStorage() {
+    localStorage.clear();
+    localStorage.setItem('todos', JSON.stringify(todoItems));
 }
