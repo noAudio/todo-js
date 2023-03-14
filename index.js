@@ -20,6 +20,8 @@ function addNewTodo() {
             new TodoItem(titleTextBox.value, contentTextBox.value)
         );
         updateTodoListDOMElements();
+        titleTextBox.value = '';
+        contentTextBox.value = '';
     } else {
         errorParagraph.innerHTML = 'Title and description cannot be empty.';
     }
