@@ -42,3 +42,13 @@
 .btn {
     margin: 1px;
 }
+
+.todo-item {
+    border: 0;
+    padding: 5%;
+    width: 170px;
+}
+
+.todo-item:hover {
+    border: 1px solid gray;
+}
