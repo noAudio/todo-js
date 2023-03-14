@@ -6,6 +6,7 @@ const todoListDiv = document.getElementById('todo-list');
 let todoItems = [];
 
 window.onload = function () {
+    // Check if there are todos stored in localstorage then add them to `todoItems` abd update the DOM.
     if(localStorage.length > 0) {
         let todos = localStorage.getItem('todos');
         todoItems = JSON.parse(todos);
@@ -15,12 +16,17 @@ window.onload = function () {
     }
 };
 
+/**
+ * Takes user input and adds it to local storage then updates the DOM
+ * via `updateTodoListDOMElements()`.
+ */
 function addNewTodo() {
     if (titleTextBox.value !== '' && contentTextBox.value !== '') {
         errorParagraph.innerHTML = '';
         todoItems.push(
             { title: titleTextBox.value, description: contentTextBox.value, isComplete: false }
         );
+        // sort the todos first so that the completed ones are always last.
         todoItems.sort(sortByIsComplete);
 
         updateLocalStorage();
@@ -33,9 +39,13 @@ function addNewTodo() {
     }
 }
 
-
+/**
+ * Iterates over `todoItems` array and adds them to the DOM.
+ * The DOM is cleared first before adding the updated list.
+ */
 function updateTodoListDOMElements() {
     if(todoItems.length > 0) {
+        // clear the DOM since we will just reappend the whole list.
         todoListDiv.innerHTML = '';
         for (let index = 0; index < todoItems.length; index++) {
             let item = todoItems[index];
@@ -84,6 +94,11 @@ function updateTodoListDOMElements() {
     }
 }
 
+/**
+ * Removes todo from the DOM based on the given index.
+ *
+ * @param {*} index refers to the index of the item being deleted.
+ */
 function deleteTodo(index) {
     let todo = document.getElementById('todo-' + index);
     todo.remove();
@@ -92,7 +107,15 @@ function deleteTodo(index) {
     updateLocalStorage();
 }
 
+/**
+ * Sets the `isComplete` value of a todo object to `true`. The index is
+ * used to specify which todo item is affected.
+ * After updating the todo item `todoItems` gets sorted so that
+ * completed todos appear last.
+ * @param {*} index refers to the index of the todo item to be completed.
+ */
 function completeTodo(index) {
+    // TODO: Deleting and readding todo after marking it as complete is now irrelevant since the list is sorted by another function.
     let todoObject = todoItems[index];
     todoObject.isComplete = true;
     deleteTodo(index);
@@ -102,6 +125,11 @@ function completeTodo(index) {
     updateTodoListDOMElements();
 }
 
+/**
+ * Removes the specified todo from `todoItems` and then puts its values
+ * back into the user inputs at the top of the page.
+ * @param {*} index refers to the index of the todo item to be edited.
+ */
 function editTodo(index) {
     let title = document.getElementById('title-' + index);
     let description = document.getElementById('content-' + index);
@@ -112,11 +140,23 @@ function editTodo(index) {
     deleteTodo(index);
 }
 
+/**
+ * Clears local storage then repopulates it with the updated
+ * `todoItems` array.
+ */
 function updateLocalStorage() {
     localStorage.clear();
     localStorage.setItem('todos', JSON.stringify(todoItems));
 }
 
+/**
+ * Sorts todo items based on the `isComplete` value. Todo items
+ * that are marked as completed get pushed to the bottom of the
+ * array.
+ * @param {*} a refers to the first item being compared
+ * @param {*} b refers to the second item being compared
+ * @returns 1 if the second item's `isComplete` is false, -1 if the first item is false and 0 if both are true.
+ */
 function sortByIsComplete(a, b) {
     if(a.isComplete && !b.isComplete) {
         return 1;
