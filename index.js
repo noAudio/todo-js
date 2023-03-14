@@ -115,11 +115,8 @@ function deleteTodo(index) {
  * @param {*} index refers to the index of the todo item to be completed.
  */
 function completeTodo(index) {
-    // TODO: Deleting and readding todo after marking it as complete is now irrelevant since the list is sorted by another function.
     let todoObject = todoItems[index];
     todoObject.isComplete = true;
-    deleteTodo(index);
-    todoItems.push(todoObject);
     todoItems.sort(sortByIsComplete);
     updateLocalStorage();
     updateTodoListDOMElements();
