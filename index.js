@@ -39,6 +39,7 @@ function updateTodoListDOMElements() {
         for (let index = 0; index < todoItems.length; index++) {
             let item = todoItems[index];
             let title = item.title;
+            let isComplete = item.isComplete;
             let description = item.description;
             let itemID = 'todo-' + index;
             let todoContainer = document.createElement('div');
@@ -46,12 +47,12 @@ function updateTodoListDOMElements() {
             todoContainer.id = itemID;
 
             let todoTitle = document.createElement('h4');
-            todoTitle.className = 'title';
+            todoTitle.className = isComplete ? 'title txt-strike' : 'title';
             todoTitle.id = 'title-' + index;
             todoTitle.innerText = title;
 
             let todoDescription = document.createElement('p');
-            todoDescription.className = 'content';
+            todoDescription.className = isComplete ? 'content txt-strike' : 'content';
             todoDescription.id = 'content-' + index;
             todoDescription.innerText = description;
 
@@ -91,15 +92,12 @@ function deleteTodo(index) {
 }
 
 function completeTodo(index) {
-    let todo = document.getElementById('todo-' + index);
-    let title = document.getElementById('title-' + index);
-    let description = document.getElementById('content-' + index);
-
-    title.classList.add('txt-strike');
-    description.classList.add('txt-strike');
-
-    todo.remove();
-    todoListDiv.appendChild(todo);
+    let todoObject = todoItems[index];
+    todoObject.isComplete = true;
+    deleteTodo(index);
+    todoItems.push(todoObject);
+    updateLocalStorage();
+    updateTodoListDOMElements();
 }
 
 function editTodo(index) {
