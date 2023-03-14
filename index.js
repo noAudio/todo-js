@@ -5,18 +5,11 @@ const todoListDiv = document.getElementById('todo-list');
 
 let todoItems = [];
 
-class TodoItem {
-    constructor(title, description) {
-        this.title = title;
-        this.description = description;
-    }
-}
-
 function addNewTodo() {
     if (titleTextBox.value !== '' && contentTextBox.value !== '') {
         errorParagraph.innerHTML = '';
         todoItems.push(
-            new TodoItem(titleTextBox.value, contentTextBox.value)
+            { title: titleTextBox.value, description: contentTextBox.value }
         );
         updateTodoListDOMElements();
         titleTextBox.value = '';
@@ -33,6 +26,8 @@ function updateTodoListDOMElements() {
         console.log(todoItems.length);
         for (let index = 0; index < todoItems.length; index++) {
             let item = todoItems[index];
+            let title = item.title;
+            let description = item.description;
             let itemID = 'todo-' + index;
             let todoContainer = document.createElement('div');
             todoContainer.className = 'todo-item column';
@@ -41,12 +36,12 @@ function updateTodoListDOMElements() {
             let todoTitle = document.createElement('h4');
             todoTitle.className = 'title';
             todoTitle.id = 'title-' + index;
-            todoTitle.innerText = item.title;
+            todoTitle.innerText = title;
 
             let todoDescription = document.createElement('p');
             todoDescription.className = 'content';
             todoDescription.id = 'content-' + index;
-            todoDescription.innerText = item.description;
+            todoDescription.innerText = description;
 
             let row = document.createElement('div');
             row.className = 'row';
