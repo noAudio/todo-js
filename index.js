@@ -25,6 +25,7 @@ function addNewTodo() {
     }
 }
 
+
 function updateTodoListDOMElements() {
     if(todoItems.length > 0) {
         todoListDiv.innerHTML = '';
@@ -56,6 +57,7 @@ function updateTodoListDOMElements() {
             let deleteButton = document.createElement('button');
             deleteButton.className = 'btn';
             deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function() {deleteTodo(index);};
 
             row.appendChild(completeButton);
             row.appendChild(editButton);
@@ -66,4 +68,11 @@ function updateTodoListDOMElements() {
             todoListDiv.appendChild(todoContainer);
         }
     }
+}
+
+function deleteTodo(index) {
+    let todo = document.getElementById('todo-' + index);
+    todo.remove();
+    // Remove todo from our list too.
+    todoItems.splice(index, 1);
 }
