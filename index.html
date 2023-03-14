@@ -9,7 +9,6 @@
           content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"
           href="index.css">
-    <script src="index.js"></script>
     <title>To-Do</title>
 </head>
 
@@ -20,7 +19,7 @@
         </div>
         <div class="main">
             <div class="column"
-                 style="width:  300px; margin: auto;">
+                 style="width: 300px; margin: auto;">
                 <input type="text"
                        class="textbox"
                        name="todo-title"
@@ -32,201 +31,16 @@
                           rows="5"
                           placeholder="To do description"></textarea>
                 <button class="btn"
-                        id="add-todo">Add To Do item</button>
+                        id="add-todo"
+                        onclick="addNewTodo()">Add To Do item</button>
                 <p class="error"
-                   id="error-txt">This is an error!</p>
+                   id="error-txt"></p>
             </div>
         </div>
-        <div class="todos grid-4">
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-            <div class="todo-item column">
-                <h4 class="title">Title</h4>
-                <p class="content">Hello I am a very good and long todo item nice to meet you I do not know of
-                    this punctuation you speak of how dare you critisize my text I will have you know I graduated at the
-                    top of my class in the University of Misaligned CSS</p>
-                <div class="row">
-                    <button class="btn">Complete</button>
-                    <button class="btn">Edit</button>
-                    <button class="btn">Delete</button>
-                </div>
-            </div>
-        </div>
+        <div class="todos grid-4"
+             id="todo-list"></div>
     </div>
+    <script src="index.js"></script>
 </body>
 
 </html>
